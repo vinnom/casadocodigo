@@ -5,15 +5,15 @@
 
 <tags:pageTemplate titulo="Livros de Java, Android, iPhone, Ruby, PHP e muito mais ....">
 
-	<section id="index-section" class="container middle">
-		<h1>Erro genérico acontecendo!!!</h1>
-		
+  <section id="index-section" class="container middle">
+    <h1>Erro genérico acontecendo!!!</h1>
+    
     <!-- 
-        Mensagem: ${exception.message}
-        <c:forEach items="${exception.stackTrace}" var="stk">
-            ${stk}
-        </c:forEach>    
+      Mensagem: ${exception.message}
+      <c:forEach 
+        items="${exception.stackTrace}" var="stk">${stk}
+      </c:forEach>    
     -->
-	</section>
+  </section>
 	
 </tags:pageTemplate>
