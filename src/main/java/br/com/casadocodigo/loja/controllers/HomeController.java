@@ -1,13 +1,9 @@
 package br.com.casadocodigo.loja.controllers;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.dao.RoleDAO;
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
-import br.com.casadocodigo.loja.models.Preco;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.Role;
-import br.com.casadocodigo.loja.models.TipoPreco;
-import br.com.casadocodigo.loja.models.Usuario;
+import br.com.casadocodigo.loja.models.*;
 
 @Controller
 public class HomeController {
