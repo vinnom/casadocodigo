@@ -18,6 +18,9 @@
             <li>
               <a href="${s:mvcUrl('PC#form').build() }" rel="nofollow"><fmt:message key="menu.cadastro_produtos" /></a>
             </li>
+            <li>
+              <a href="${s:mvcUrl('PSC#pedidos').build()}" rel="nofollow"><fmt:message key="menu.pedidos" /></a>
+            </li>
           </security:authorize>
           <li>
             <a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">
