@@ -1,6 +1,8 @@
 package br.com.casadocodigo.loja.dao;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,28 +19,47 @@ import br.com.casadocodigo.loja.models.TipoPreco;
 @Transactional
 public class ProdutoDAO {
 
-	@PersistenceContext
-	private EntityManager manager;
-	
-	public void gravar(Produto produto) {
-		manager.persist(produto);
-	}
+  @PersistenceContext
+  private EntityManager manager;
 
-	public List<Produto> listar() {
-		return manager.createQuery("select distinct(p) from Produto p join fetch p.precos", Produto.class)
-				.getResultList();
-	}
+  public void gravar(Produto produto) {
+    manager.persist(produto);
+  }
 
-	public Produto find(Integer id) {
-        return manager.createQuery("select distinct(p) from Produto p join fetch p.precos precos where p.id = :id", 
-        		Produto.class).setParameter("id", id)
-        		.getSingleResult();
-	}
-	
-	public BigDecimal somaPrecosPorTipo(TipoPreco tipoPreco){
-	    TypedQuery<BigDecimal> query = manager.createQuery("select sum(preco.valor) from Produto p join p.precos preco "
-	    		+ "where preco.tipo = :tipoPreco", BigDecimal.class);
-	    query.setParameter("tipoPreco", tipoPreco);
-	    return query.getSingleResult();
-	}
+  public List<Produto> listar() {
+    return manager.createQuery("select distinct(p) from Produto p join fetch p.precos", Produto.class).getResultList();
+  }
+
+  public Produto find(Integer id) {
+    return manager
+        .createQuery("select distinct(p) from Produto p join fetch p.precos precos where p.id = :id", Produto.class)
+        .setParameter("id", id).getSingleResult();
+  }
+
+  public BigDecimal somaPrecosPorTipo(TipoPreco tipoPreco) {
+    TypedQuery<BigDecimal> query = manager.createQuery(
+        "select sum(preco.valor) from Produto p join p.precos preco " + "where preco.tipo = :tipoPreco",
+        BigDecimal.class);
+    query.setParameter("tipoPreco", tipoPreco);
+    return query.getSingleResult();
+  }
+
+  public List<Produto> getProdutosPorData(Calendar data) {
+    List<Produto> listaTotal = manager
+        .createQuery("select distinct(p) from Produto p join fetch p.precos", Produto.class).getResultList();
+    List<Produto> listaFiltrada = new ArrayList<>();
+
+    if (data != null) {
+      for (Produto produto : listaTotal) {
+        if (data.getTimeInMillis() < produto.getDataLancamento().getTimeInMillis()) {
+          listaFiltrada.add(produto);
+        }
+        
+      }
+      return listaFiltrada;
+    } else {
+      return listaTotal;
+    }
+
+  }
 }
