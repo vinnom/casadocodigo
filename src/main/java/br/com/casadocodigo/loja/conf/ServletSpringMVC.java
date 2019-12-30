@@ -11,6 +11,8 @@ import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import br.com.casadocodigo.loja.validation.UsuarioValidation;
+
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override

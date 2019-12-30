@@ -22,6 +22,7 @@ public class Usuario implements UserDetails {
 	@Id
 	private String email;
 	private String senha;
+	private String senhaConfirma;
 	private String nome;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -96,5 +97,56 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+  public String getSenhaConfirma() {
+    return senhaConfirma;
+  }
+
+  public void setSenhaConfirma(String senhaConfirma) {
+    this.senhaConfirma = senhaConfirma;
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((email == null) ? 0 : email.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    Usuario other = (Usuario) obj;
+    if (email == null) {
+      if (other.email != null) {
+        return false;
+      }
+    } else if (!email.equals(other.email)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean senhasConferem(String str1, String str2) {
+    if (str1.equals(str2)) {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  @Override
+  public String toString() {
+    return "nome: " + this.nome + " email: " + this.email;
+  }
 	
 }

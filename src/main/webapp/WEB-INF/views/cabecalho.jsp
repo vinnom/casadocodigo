@@ -21,6 +21,9 @@
             <li>
               <a href="${s:mvcUrl('PSC#pedidos').build()}" rel="nofollow"><fmt:message key="menu.pedidos" /></a>
             </li>
+            <li>
+              <a href="${s:mvcUrl('UC#listar').build()}" rel="nofollow"><fmt:message key="menu.usuarios" /></a>
+            </li>
           </security:authorize>
           <li>
             <a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">
