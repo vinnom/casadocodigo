@@ -48,7 +48,9 @@ public class UsuarioController {
 		
 		dao.gravar(usuario);
 		
-		redirectAttributes.addFlashAttribute("message", "Usuário cadastrado com sucesso!");
+		String sucesso = "Usuário " + usuario.getNome() + " cadastrado com sucesso!";
+		
+		redirectAttributes.addFlashAttribute("sucesso", sucesso);
 		
 		return new ModelAndView("redirect:/usuarios");
 	}

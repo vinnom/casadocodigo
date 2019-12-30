@@ -45,8 +45,7 @@
       </div>
     </nav>
     <div class="container">
-      <p>${sucesso}</p>
-      <p>${falha}</p>
+      <h3>${sucesso}</h3>
       <h2><a href="${s:mvcUrl('UC#form').build()}">Novo Usuário</a></h2>
       <h1>Usuários cadastrados:</h1>
       <table class="table table-bordered table-striped table-hover">
