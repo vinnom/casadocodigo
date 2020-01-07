@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
           <label>Email</label>
-          <form:textarea path="email" cssClass="form-control" />
+          <form:input path="email" cssClass="form-control" />
           <form:errors path="email" />
         </div>
         <div class="form-group">
