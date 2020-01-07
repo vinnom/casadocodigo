@@ -30,13 +30,17 @@ public class UsuarioValidation implements Validator{
 		Usuario usuario = (Usuario) target;
 		System.out.println(usuario.getSenha());
 		System.out.println(usuario.getSenhaConfirma());
+		
 		if(dao.existe(usuario)) {
       errors.rejectValue("email", "usuario.existe");
     }
-		if(usuario.getSenha().length() < 5) {
-			errors.rejectValue("senha", "senha.tamanho");
-		} else if (!usuario.senhasConferem(usuario.getSenha(), usuario.getSenhaConfirma())) {
-		  errors.rejectValue("senhaConfirma", "senha.nao.confere");
+		
+		if (!usuario.getSenha().isEmpty()) {
+		  if(usuario.getSenha().length() < 5) {
+		    errors.rejectValue("senha", "senha.tamanho");
+		  } else if (!usuario.senhasConferem(usuario.getSenha(), usuario.getSenhaConfirma())) {
+		    errors.rejectValue("senhaConfirma", "senha.nao.confere");
+		  }
     }
 	}
 }
