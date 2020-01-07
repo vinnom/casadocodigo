@@ -5,7 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 
 <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
-<c:url value="/resources" var="resPath" />
+
+<c:url value="/usuarios/editar" var="editar"/>
 
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
             <li class="nav-item"><a href="${s:mvcUrl('PSC#pedidos').build()}">Pedidos</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><span><a href="<c:url value="/logout" />">Sair</a></span></li>
+            <li class="nav-item"><a href="<c:url value="/logout" />">Sair</a></li>
             <li class="nav-item">
               <a href="#"><security:authentication property="principal" var="usuario" /> ${usuario.username} </a>
             </li>
@@ -47,29 +48,13 @@
       </div>
     </nav>
     <div class="container">
-      <h2><a href="${s:mvcUrl('UC#form').build()}">Novo Usuário</a></h2>
-      <h1>Usuários cadastrados:</h1>
-      <h3>${sucesso}</h3>
-      <table class="table table-bordered table-striped table-hover">
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Roles</th>
-        </tr>
-        <c:forEach items="${usuarios}" var="usuario">
-          <tr>
-            <td>${usuario.nome}</td>
-            <td>${usuario.email}</td>
-            <td>${usuario.roles}</td>
-            <td>
-              <form:form action="${s:mvcUrl('UC#editarForm').build()}" method="GET" modelAttribute="usuario" >
-                <input type="hidden" name="email" value="${usuario.email}"  />
-                <input type="image" src="${resPath}/imagens/editar.png" alt="Editar" title="Editar"/>
-              </form:form>
-            </td>
-          </tr>
-        </c:forEach>
-      </table>
+        <form:form servletRelativeAction="${s:mvcUrl('UC#atualizar').arg(0, u.email).arg(1, u.roles).build()}"
+          method="POST" modelAttribute="u">
+          <h1>Cadastro de Permissões para ${u.nome}</h1>
+          <form:checkboxes items="${listaRoles}" path="roles"/>
+          <br>
+          <button type="submit">Atualizar</button>
+        </form:form>
     </div>
   </body>
 </html>
