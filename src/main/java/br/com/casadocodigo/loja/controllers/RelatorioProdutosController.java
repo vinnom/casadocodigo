@@ -19,13 +19,12 @@ public class RelatorioProdutosController {
 
   @RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET, produces = "application/json")
   @ResponseBody
-  public List<Object> getRelatorio(@RequestParam(required = false) Calendar data) {
-    Relatorio relatorio = new Relatorio();
+  public Relatorio getRelatorio(@RequestParam(required = false) Calendar data) {
     List<Produto> produtos = produtoDAO.getProdutosPorData(data);
     
-    relatorio.setRelatorio(produtos);
+    Relatorio relatorio = new Relatorio(produtos);
        
-    return relatorio.getRelatorio(data);
+    return relatorio;
   }
 
 }

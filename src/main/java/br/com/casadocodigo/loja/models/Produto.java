@@ -86,11 +86,6 @@ public class Produto implements Serializable{
 	}
 	
 	@Override
-	public String toString() {
-		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + "]";
-	}
-	
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
