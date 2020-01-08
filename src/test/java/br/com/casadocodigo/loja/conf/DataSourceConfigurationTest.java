@@ -14,7 +14,7 @@ public class DataSourceConfigurationTest {
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo_test");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		return dataSource;
