@@ -17,8 +17,9 @@ public class Usuario implements UserDetails {
 	@Id
 	private String email;
 	private String senha;
-	private String senhaConfirma;
 	private String nome;
+	@Transient
+	private String senhaConfirma;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Usuario_Role",

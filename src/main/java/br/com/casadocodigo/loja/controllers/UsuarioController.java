@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -31,6 +32,9 @@ public class UsuarioController {
 
   @Autowired
   private UsuarioValidation validaUsuario;
+  
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {
@@ -50,6 +54,8 @@ public class UsuarioController {
       return form(usuario);
     }
 
+    String senhaCripto = passwordEncoder.encode(usuario.getSenha());
+    usuario.setSenha(senhaCripto);
     usuarioDao.gravar(usuario);
 
     String sucesso = "Usuário " + usuario.getNome() + " cadastrado com sucesso!";
