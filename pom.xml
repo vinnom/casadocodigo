@@ -49,7 +49,7 @@
     <spring.version>4.3.17.RELEASE</spring.version>
     <spring.security.version>4.2.13.RELEASE</spring.security.version>
     <hibernate.version>5.4.4.Final</hibernate.version>
-    <mysql.connector.version>8.0.18</mysql.connector.version>
+    <mysql.connector.version>8.0.28</mysql.connector.version>
   </properties>
 
   <dependencies>
