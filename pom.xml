@@ -46,7 +46,7 @@
     <!-- <spring.security.version>4.0.0.RELEASE</spring.security.version> -->
 
     <!-- https://docs.spring.io/spring-security/site/docs/4.2.6.RELEASE/reference/htmlsingle/#maven-bom -->
-    <spring.version>4.3.17.RELEASE</spring.version>
+    <spring.version>5.2.20.RELEASE</spring.version>
     <spring.security.version>4.2.13.RELEASE</spring.security.version>
     <hibernate.version>5.4.4.Final</hibernate.version>
     <mysql.connector.version>8.0.18</mysql.connector.version>
